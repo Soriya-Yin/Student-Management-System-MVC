@@ -16,20 +16,7 @@ public class StudentView {
     private final static Scanner scanner = new Scanner(System.in);
 
     public StudentRequestDto displayStudentCreateDto() {
-//        System.out.println("[+] Enter Full Name: ");
-//        String fullName = scanner.nextLine();
-//        System.out.println("[+] Enter Gender: ");
-//        String gender = scanner.nextLine();
-//        System.out.println("[+] Enter Date of Birth(Fornat: YYYY-MM-DD ): ");
-//        String dob = scanner.nextLine();
-//
-//        String[] parts = dob.split("-");
-//        int year = Integer.parseInt(parts[0]);
-//        int month = Integer.parseInt(parts[1]);
-//        int day = Integer.parseInt(parts[2]);
-//        LocalDate localDate = LocalDate.of(year, month, day);
-//
-//        return new StudentRequestDto(fullName, gender, localDate);
+
         String fullName="" ;
         String gender="";
         LocalDate dateOfBirth = null;
