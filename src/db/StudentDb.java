@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class StudentDb {
-    private final List<Student> studentsList;
+    public static List<Student> studentsList;
 
     public StudentDb(){
         studentsList = new ArrayList<>(){{
@@ -27,12 +27,7 @@ public class StudentDb {
             add(new Student("Jek Sngor",Student.Gender.FEMALE, LocalDate.now().minusYears(20)));
             add(new Student("Pongtea Brai",Student.Gender.MALE, LocalDate.now().minusYears(20)));
             add(new Student("Khor ko",Student.Gender.FEMALE, LocalDate.now().minusYears(20)));
-            add(new Student("Somlor Kiri",Student.Gender.MALE, LocalDate.now().minusYears(20)));
-            add(new Student("ChaKdav Morn",Student.Gender.FEMALE, LocalDate.now().minusYears(20)));
-            add(new Student("Pong Khrouch",Student.Gender.MALE, LocalDate.now().minusYears(20)));
-            add(new Student("Numpang Pate",Student.Gender.FEMALE, LocalDate.now().minusYears(20)));
-            add(new Student("Jek Namva",Student.Gender.MALE, LocalDate.now().minusYears(20)));
-            add(new Student("Jruk Prolit",Student.Gender.FEMALE, LocalDate.now().minusYears(20)));
+
         }};
     }
 

@@ -8,6 +8,10 @@ import model.dto.StudentResponseDto;
 import model.service.StudentService;
 import view.StudentView;
 
+import java.util.InputMismatchException;
+import java.util.Scanner;
+import static db.StudentDb.studentsList;
+
 public class StudentController {
 
     private final StudentView view;
@@ -24,6 +28,7 @@ public class StudentController {
         try {
             StudentRequestDto request = view.displayStudentCreateDto();
             StudentResponseDto response = service.createStudent(request);
+            assert response != null;
             view.displaySingleStudent(response);
         } catch (StudentException e) {
             System.out.println(e.getMessage());
@@ -31,22 +36,60 @@ public class StudentController {
     }
 
     public void showAll() {
-        view.displayStudentList(
-                service.getAllStudents(3, 2)
-        );
+//        view.displayStudentList(
+//                service.getAllStudents(3, 2)
+//        );
+        Scanner scanner =  new Scanner(System.in);
+
+        try {
+
+            System.out.print("Enter limit of the data that you want to display: ");
+            
+            int limit = scanner.nextInt();
+            int pageNumber = 1;
+
+            int totalPages = (studentsList.size() + limit - 1) / limit;
+
+            while (true) {
+
+                int offset = (pageNumber - 1) * limit;
+
+                view.displayStudentList(
+
+                        service.getAllStudents(offset, limit)
+
+                );
+                System.out.println("Page " + pageNumber + " of " + totalPages);
+
+                view.displayPage();
+
+                System.out.print("Choose option: ");
+                int option = scanner.nextInt();
+
+                if (option == 1) {
+                    pageNumber = service.updatePageNumber(pageNumber + 1, totalPages);
+
+                } else if (option == 2) {
+                    pageNumber = service.updatePageNumber(pageNumber - 1, totalPages);
+
+                } else if (option == 0) {
+                    break;
+                }
+            }
+        }
+        catch (InputMismatchException e){
+
+            System.out.println("Please input number only");
+        }
     }
 
     public void delete() {
         Long id = view.showIdInput();
-//        service.deleteById(id);
         if (service.deleteById(id)) {
-            System.out.println();
             System.out.println("[+] Student deleted successfully");
-            System.out.println();
         } else {
-            System.out.println();
-            System.out.println("[+] Student could not be deleted");
-            System.out.println();
+            System.out.println("[+] Student fail to deleted");
+
         }
     }
 

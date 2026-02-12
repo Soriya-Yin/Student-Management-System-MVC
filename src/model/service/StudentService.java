@@ -17,4 +17,6 @@ public interface StudentService {
     boolean deleteById(Long id);
 
     StudentResponseDto updateById(Long id, StudentUpdateDto student);
+
+    int updatePageNumber(int pagenumber , int totalpage);
 }

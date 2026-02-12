@@ -48,18 +48,12 @@ public class StudentDaoImpl implements StudentDao {
         return null;
     }
 
-//    @Override
-//    public Student updateById(Long id, StudentRequestDto student) {
-//        for(int i =0;i < studentDb.getStudentsList().size();i++){
-//            if(studentDb.getStudentsList().get(i).getId().equals(id)){
-//                studentDb.getStudentsList().get(i).setId(id);
-//                studentDb.getStudentsList().get(i).setFullName(student.getFullName());
-//                studentDb.getStudentsList().get(i).setGender(student.getGender());
-//                studentDb.getStudentsList().get(i).setDateOfBirth(student.getDateOfBirth());
-//                return studentDb.getStudentsList().get(i);
-//            }
-//        }
-//        return null;
-//    }
+    @Override
+    public boolean FindById(Long id) {
+        return studentDb.getStudentsList()
+                .stream()
+                .anyMatch(student -> student.getId().equals(id));
+    }
+
 
 }

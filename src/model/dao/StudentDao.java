@@ -15,6 +15,8 @@ public interface StudentDao {
 
     Student updateById(Long id, StudentRequestDto student);
 
+    boolean FindById(Long id);
+
 
 //    Student UpdateById(Long id, StudentRequestDto student);
 }
