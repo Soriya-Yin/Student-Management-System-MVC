@@ -25,8 +25,10 @@ public class StudentView {
         while (!validInput) {
             System.out.print("[+] Enter Full Name: ");
             fullName = scanner.nextLine();
+
             if (!fullName.isBlank() && fullName.matches("^[a-zA-Z\\s]+$")) {
                 validInput = true;
+
             } else {
                 System.out.println("Invalid! Name must be letters only and not empty.");
             }
@@ -34,20 +36,22 @@ public class StudentView {
 
         validInput = false;
         while (!validInput) {
-            System.out.print("[+] Enter Gender (male/female): ");
+            System.out.print("[+] Enter Gender (Male/Female): ");
             gender = scanner.nextLine().toLowerCase().trim();
-            if (gender.equals("male") || gender.equals("female")) {
+
+            if (gender.equals("Male") || gender.equals("Female") || gender.equals("male") || gender.equals("female")) {
                 validInput = true;
+
             } else {
-                System.out.println("Invalid! Please enter 'male' or 'female'.");
+                System.out.println("Invalid! Please enter 'Male' or 'Female'.");
             }
         }
 
-
         validInput = false;
         while (!validInput){
+
             try{
-                System.out.print("[+] Enter Date Of Birth(Format yyyy-mm-dd: ");
+                System.out.print("[+] Enter Date Of Birth(Format yyyy-mm-dd:) ");
                 String dob = scanner.nextLine();
                 String[] parts = dob.split("-");
                 int year = Integer.parseInt(parts[0]);
@@ -55,12 +59,12 @@ public class StudentView {
                 int day = Integer.parseInt(parts[2]);
                 dateOfBirth = LocalDate.of(year, month, day);
                 validInput = true;
+
             } catch (Exception e){
                 System.out.println("Invalid input! ");
                 System.out.println("Please input date");
             }
         }
-
 
         return new StudentRequestDto(
                 fullName, gender, dateOfBirth
@@ -69,8 +73,7 @@ public class StudentView {
 
     public void displaySingleStudent(StudentResponseDto responseDto) {
         Table table = new Table(
-                4, BorderStyle.CLASSIC
-        );
+                4, BorderStyle.CLASSIC );
         table.addCell("Student Information", new CellStyle(CellStyle.HorizontalAlign.center), 4);
         table.addCell("ID");
         table.addCell(responseDto.id().toString(), 3);
@@ -103,32 +106,39 @@ public class StudentView {
         });
         System.out.println(table.render());
     }
+
     public void displayPage(){
         System.out.println("""
-                1. Next Page
-                2. Previous Page
-                0. Back to Main
+                 |==============================|
+                        1. Next Page
+                        2. Previous Page
+                        0. Back to Main
                 """);
     }
+
     public Long showIdInput(){
+
         while (true){
+
             try{
                 System.out.print("[+] Enter Student ID: ");
                 return Long.parseLong(scanner.nextLine());
+
             }catch (Exception e){
                 System.out.println("Invalid input please try again.");
             }
         }
-
     }
 
     public int showMenuAndGetOption() {
         System.out.println ("""
-                    1.Create Student Data
-                    2.Show Student Data
-                    3.Delete Student Data
-                    4.Update Student Data
-                    0.Exit
+                   |==============================|
+                        1.Create Student Data
+                        2.Show Student Data
+                        3.Delete Student Data
+                        4.Update Student Data
+                        0.Exit
+                  
                     """);
         System.out.print("Please Choose an Option: ");
 
@@ -137,11 +147,9 @@ public class StudentView {
             try {
 
                 System.out.print("Choose an Option: ");
-
                 return Integer.parseInt(scanner.nextLine());
 
             } catch (NumberFormatException e) {
-
                 System.out.println("Invalid input! Please input number" + e);
             }
         }

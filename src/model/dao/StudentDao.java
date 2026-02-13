@@ -17,6 +17,4 @@ public interface StudentDao {
 
     boolean FindById(Long id);
 
-
-//    Student UpdateById(Long id, StudentRequestDto student);
 }

@@ -73,7 +73,6 @@ public class StudentServiceImpl implements StudentService {
         if (pagenumber > totalPage) {
 
             return totalPage;
-
         }
         return pagenumber;
     }

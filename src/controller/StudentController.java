@@ -36,9 +36,6 @@ public class StudentController {
     }
 
     public void showAll() {
-//        view.displayStudentList(
-//                service.getAllStudents(3, 2)
-//        );
         Scanner scanner =  new Scanner(System.in);
 
         try {
@@ -86,9 +83,9 @@ public class StudentController {
     public void delete() {
         Long id = view.showIdInput();
         if (service.deleteById(id)) {
-            System.out.println("[+] Student deleted successfully");
+            System.out.println("[+]  Deleted student successfully");
         } else {
-            System.out.println("[+] Student fail to deleted");
+            System.out.println("[+] Fail to delete student");
 
         }
     }

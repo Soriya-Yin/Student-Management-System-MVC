@@ -39,7 +39,6 @@ public class StudentDaoImpl implements StudentDao {
                 studentDb.getStudentsList().get(i).setId(id);
                 studentDb.getStudentsList().get(i).setFullName(student.fullName());
                 studentDb.getStudentsList().get(i).setGender(Student.Gender.valueOf(student.gender().toUpperCase(Locale.ROOT)));
-
                 studentDb.getStudentsList().get(i).setDateOfBirth(student.dateOfBirth());
                 return studentDb.getStudentsList().get(i);
 
